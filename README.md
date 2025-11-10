@@ -82,6 +82,7 @@ Pembagian Core dan Tugas
 | ---------- | ------------------------------------------------------------- | ------------------------------------ |
 | **Core 0** | Rotary1, Pot1, Stepper1, Servo1, LED1, Buzzer1, Button1       | Input dan output pertama             |
 | **Core 1** | Rotary2, Pot2, Stepper2, Servo2, LED2, Buzzer2, Button2, OLED | Input/output kedua dan tampilan OLED |
+
 Masing-masing periferal berjalan sendiri, tidak saling berbagi variabel atau interrupt.
 Tujuannya agar performa tiap core dapat diamati secara murni tanpa interkoneksi.
 

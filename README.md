@@ -91,6 +91,7 @@ Eksekusi
 2. Buka Serial Monitor (baud rate 115200).
 3. Amati output task dari kedua core:
 
+```
 [Core0] Servo1 → 90°
 [Core1] Servo2 → 45°
 [Core0] Stepper1 → CW | Step 4
@@ -98,6 +99,7 @@ Eksekusi
 [Core0] Encoder1 Position: 23
 [Core1] Encoder2 Position: -12
 [Core1] OLED → Update Display OK
+```
 
 4.Ubah input (putar rotary, tekan tombol, ubah posisi potensiometer).
 5. Lihat bagaimana periferal bereaksi real-time tanpa lag.

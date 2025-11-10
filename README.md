@@ -53,7 +53,52 @@ Setiap periferal memiliki sketch terpisah untuk memudahkan eksperimen paralel:
 ---
 
 ## Kegunaan xTaskCreatePinnedToCore()
-Fungsi inti FreeRTOS pada ESP32 yang memungkinkan untuk menentukan pada core apa task dijalankan
+Fungsi inti FreeRTOS pada ESP32 yang memungkinkan untuk menentukan pada core apa task dijalankan. 
+
+```cpp
+xTaskCreatePinnedToCore(
+  taskFunction,      // Fungsi task
+  "TaskName",        // Nama task
+  4096,              // Stack size
+  NULL,              // Parameter
+  1,                 // Prioritas
+  NULL,              // Handle (opsional)
+  0                  // Nomor core (0 atau 1)
+);
+```
+Contoh
+```cpp
+xTaskCreatePinnedToCore(taskServo1, "Servo1_Task", 4096, NULL, 1, NULL, 0);
+xTaskCreatePinnedToCore(taskServo2, "Servo2_Task", 4096, NULL, 1, NULL, 1);
+```
+Artinya:
+Task Servo1 dijalankan di Core 0
+Task Servo2 dijalankan di Core 1
 
 
+Pembagian Core dan Tugas
+
+| Core       | Periferal                                                     | Tugas                                |
+| ---------- | ------------------------------------------------------------- | ------------------------------------ |
+| **Core 0** | Rotary1, Pot1, Stepper1, Servo1, LED1, Buzzer1, Button1       | Input dan output pertama             |
+| **Core 1** | Rotary2, Pot2, Stepper2, Servo2, LED2, Buzzer2, Button2, OLED | Input/output kedua dan tampilan OLED |
+Masing-masing periferal berjalan sendiri, tidak saling berbagi variabel atau interrupt.
+Tujuannya agar performa tiap core dapat diamati secara murni tanpa interkoneksi.
+
+Eksekusi
+1. Upload salah satu program .ino ke board ESP32-S3.
+2. Buka Serial Monitor (baud rate 115200).
+3. Amati output task dari kedua core:
+
+[Core0] Servo1 → 90°
+[Core1] Servo2 → 45°
+[Core0] Stepper1 → CW | Step 4
+[Core1] Stepper2 → CCW | Step 8
+[Core0] Encoder1 Position: 23
+[Core1] Encoder2 Position: -12
+[Core1] OLED → Update Display OK
+
+4.Ubah input (putar rotary, tekan tombol, ubah posisi potensiometer).
+5. Lihat bagaimana periferal bereaksi real-time tanpa lag.
+6. Perhatikan bahwa kedua core berjalan simultan dan task tidak saling mengganggu.
 

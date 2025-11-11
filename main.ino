@@ -87,13 +87,13 @@ void setup() {
 
   // === TASK CREATION ===
   xTaskCreatePinnedToCore(taskPot,     "PotTask",     4096, NULL, 1, NULL, 0);
-  xTaskCreatePinnedToCore(taskLED,     "LEDTask",     4096, NULL, 1, NULL, 1);
+  xTaskCreatePinnedToCore(taskLED,     "LEDTask",     4096, NULL, 0, NULL, 1);
   xTaskCreatePinnedToCore(taskButton,  "ButtonTask",  4096, NULL, 1, NULL, 0);
-  xTaskCreatePinnedToCore(taskBuzzer,  "BuzzTask",    4096, NULL, 1, NULL, 1);
+  xTaskCreatePinnedToCore(taskBuzzer,  "BuzzTask",    4096, NULL, 0, NULL, 1);
   xTaskCreatePinnedToCore(taskStepper, "StepperTask", 4096, NULL, 1, NULL, 0);
-  xTaskCreatePinnedToCore(taskEncoder, "EncoderTask", 4096, NULL, 1, NULL, 1);
+  xTaskCreatePinnedToCore(taskEncoder, "EncoderTask", 4096, NULL, 0, NULL, 1);
   xTaskCreatePinnedToCore(taskServo,   "ServoTask",   4096, NULL, 1, NULL, 0);
-  xTaskCreatePinnedToCore(taskOLED,    "OLEDTask",    4096, NULL, 1, NULL, 1);
+  xTaskCreatePinnedToCore(taskOLED,    "OLEDTask",    4096, NULL, 0, NULL, 1);
 }
 
 void loop() {} // Semua berjalan di task
@@ -208,3 +208,4 @@ void taskOLED(void *pvParameters) {
     vTaskDelay(500 / portTICK_PERIOD_MS);
   }
 }
+

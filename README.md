@@ -1,6 +1,6 @@
 # 3223600057_Alfonso_Mayzart_Ojahan_Silitonga_TugasRTOS
 Tugas RTOS mengakses 8 periferal yang terdiri dari oled, led, buzzer, button, potensiometer, stepper, servo, rotary-encoder di ESP32-S3 pada platform wokwi.com
-# Dual-Core ESP32-S3 Multitasking with FreeRTOS  
+# Dual-Core ESP32-S3 Multitasking with FreeRTOS Task 1
 
 
 Repositori ini berisi serangkaian percobaan untuk **mengeksplorasi kemampuan dua core ESP32-S3** dengan **multitasking berbasis FreeRTOS**.  
@@ -106,8 +106,8 @@ Tujuannya agar performa tiap core dapat diamati secara murni tanpa interkoneksi.
 6. Perhatikan bahwa kedua core berjalan simultan dan task tidak saling mengganggu.
 
 
-###Task 2
-# ESP32-S3 Dual-Core FreeRTOS Project
+
+# ESP32-S3 Dual-Core FreeRTOS Project Task 2
 
 ## Deskripsi Proyek
 Proyek ini menunjukkan cara memaksimalkan penggunaan **dua core prosesor ESP32-S3** untuk menjalankan beberapa **periferal secara paralel** tanpa saling mengganggu.  
